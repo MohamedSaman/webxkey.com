@@ -65,29 +65,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      {/* Google Analytics and Structured Data can be rendered here */}
-      <GoogleAnalytics />
-      <StructuredData
-        type="organization"
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Webxkey",
-          url: "https://webxkey.com",
-          logo: "https://webxkey.com/Images/logo.png",
-          contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+94 755 299721",
-            contactType: "customer service",
-          },
-          sameAs: [
-            "https://linkedin.com/company/webxkey",
-            "https://x.com/webxkey",
-          ],
-        }}
-      />
-      <ClientLayout>{children}</ClientLayout>
-    </>
+    <html lang="en">
+      <head>
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+
+        {/* Additional OG tags that LinkedIn might look for */}
+        <meta
+          property="og:image:secure_url"
+          content="https://webxkey.com/og-img.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Preconnect to important origins */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
+        {/* DNS prefetch for external domains */}
+        <link rel="dns-prefetch" href="https://cdn.webxkey.com" />
+
+        <GoogleAnalytics />
+
+        {/* Add StructuredData for Organization */}
+        <StructuredData
+          type="organization"
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Webxkey",
+            url: "https://webxkey.com",
+            logo: "https://webxkey.com/Images/logo.png",
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+94 755 299721",
+              contactType: "customer service",
+            },
+            sameAs: [
+              "https://linkedin.com/company/webxkey",
+              "https://x.com/webxkey",
+            ],
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning={true}>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
   );
 }
