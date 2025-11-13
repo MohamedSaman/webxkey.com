@@ -1,0 +1,37 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Remove trailing slash
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)/$ /$1 [L,R=301]
+  
+  # Redirect non-www to www or vice versa (choose one)
+  # RewriteCond %{HTTP_HOST} ^webxkey\.com [NC]
+  # RewriteRule ^(.*)$ https://www.webxkey.com/$1 [L,R=301]
+  
+  # Or redirect www to non-www
+  # RewriteCond %{HTTP_HOST} ^www\.webxkey\.com [NC]
+  # RewriteRule ^(.*)$ https://webxkey.com/$1 [L,R=301]
+  
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # Handle Next.js routing
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /404.html [L]
+  
+  # Cache control for static assets
+  <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|webp|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>
