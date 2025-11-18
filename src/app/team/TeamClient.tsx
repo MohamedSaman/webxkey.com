@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import DigitalBrandSection from "../../components/DigitalBrandSection";
 import Banner from "../../components/Banner";
@@ -9,11 +9,16 @@ import Image from "next/image";
 import "../styles/home.css";
 
 const TeamClient = () => {
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="overflow-x-hidden">
       {/* Main content container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section with Image */}
+        {/* Header Section with Image - SAME SPACING AS CAREER PAGE */}
         <section className="my-[40px] md:my-[60px] relative">
           {/* Decorative elements */}
           <div className="absolute inset-0 -z-10">
