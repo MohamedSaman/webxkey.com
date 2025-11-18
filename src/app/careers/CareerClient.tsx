@@ -108,7 +108,7 @@ const CareerClient = () => {
                     className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500 brightness-90"
                     width={800}
                     height={600}
-                    quality={100}
+                    quality={75}
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
