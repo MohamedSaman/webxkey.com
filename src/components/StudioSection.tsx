@@ -126,7 +126,7 @@ const StudioSection: React.FC = () => {
         viewport={{ once: true }}
       >
         <motion.img
-          src="/Images/Webxkey_office.webp"
+          src="/Images/web office.png"
           alt="Studio"
           className="w-full max-w-[500px] rounded-lg object-cover"
           initial={{ scale: 0.9, opacity: 0 }}
