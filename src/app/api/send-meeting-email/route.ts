@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
     // Email to CLIENT
     const clientMailOptions = {
-      from: `"WebxKey Meetings" <${process.env.HOSTINGER_FROM_EMAIL}>`,
+      from: `"WebxKey Meetings " <${process.env.HOSTINGER_FROM_EMAIL}>`,
       to:`${to} ${process.env.HOSTINGER_TO_EMAIL}`, 
       subject: `Meeting Confirmation - ${formattedDate} at ${meetingTime}`,
       html: `
