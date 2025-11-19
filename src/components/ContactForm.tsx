@@ -16,6 +16,8 @@ interface ContactItem {
 type FormData = {
   name: string;
   email: string;
+  phone: string;
+  country: string;
   projectType: string;
   referralSource: string;
   projectDescription: string;
@@ -58,6 +60,8 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
+    country: "",
     projectType: "Social media marketing",
     referralSource: "Google",
     projectDescription: "",
@@ -81,7 +85,7 @@ const ContactForm: React.FC = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://webxkey.com/mail.php", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -94,6 +98,8 @@ const ContactForm: React.FC = () => {
         setFormData({
           name: "",
           email: "",
+          phone: "",
+          country: "",
           projectType: "Social media marketing",
           referralSource: "Google",
           projectDescription: "",
@@ -162,8 +168,8 @@ const ContactForm: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Name"
-                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none"
+                    placeholder="Your full name"
+                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
                 </div>
@@ -174,10 +180,50 @@ const ContactForm: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email"
-                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none"
+                    placeholder="your.email@example.com"
+                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-sm">Phone number:</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+1 234 567 8900"
+                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm">Country:</label>
+                  <select
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  >
+                    <option value="">Select your country</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="India">India</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Japan">Japan</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
               </div>
 
@@ -190,7 +236,7 @@ const ContactForm: React.FC = () => {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
-                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none"
+                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option>Social media marketing</option>
                     <option>Website Development</option>
@@ -211,7 +257,7 @@ const ContactForm: React.FC = () => {
                     name="referralSource"
                     value={formData.referralSource}
                     onChange={handleChange}
-                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none"
+                    className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option>Google</option>
                     <option>Friend or Colleague</option>
@@ -219,6 +265,7 @@ const ContactForm: React.FC = () => {
                     <option>Facebook</option>
                     <option>LinkedIn</option>
                     <option>Email NewsLetter</option>
+                    <option>Other</option>
                   </select>
                 </div>
               </div>
@@ -229,20 +276,21 @@ const ContactForm: React.FC = () => {
                   name="projectDescription"
                   value={formData.projectDescription}
                   onChange={handleChange}
-                  placeholder="Your project description"
-                  className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none h-28"
+                  placeholder="Tell us about your project requirements, goals, timeline, and any specific details..."
+                  className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 h-28"
                   required
                 ></textarea>
               </div>
 
               <motion.button
                 type="submit"
-                className="w-full p-3 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-md text-lg font-semibold cursor-pointer disabled:opacity-70"
+                className="w-full p-3 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-md text-lg font-semibold cursor-pointer disabled:opacity-70 hover:from-blue-600 hover:to-blue-400 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send"}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </motion.button>
             </form>
           </motion.div>
@@ -264,10 +312,10 @@ const ContactForm: React.FC = () => {
                 {contactItems.map((item, index) => (
                   <li
                     key={index}
-                    className="flex justify-center items-center gap-3 cursor-pointer hover:underline text-lg"
+                    className="flex justify-center items-center gap-3 cursor-pointer hover:underline text-lg transition-all duration-300 hover:text-blue-300"
                     onClick={item.action}
                   >
-                    <span>{item.icon}</span>
+                    <span className="text-blue-400">{item.icon}</span>
                     {item.text}
                   </li>
                 ))}
@@ -280,7 +328,7 @@ const ContactForm: React.FC = () => {
                     width={180}
                     height={180}
                     alt="WebxKey Logo"
-                    className="mx-auto hover:opacity-90 transition-opacity"
+                    className="mx-auto hover:opacity-90 transition-opacity duration-300"
                     priority
                   />
                 </Link>

@@ -44,15 +44,15 @@ export async function POST(request: Request) {
       },
     });
 
-    // Email content with phone and country
+    // Email content for scraping service with phone and country
     const mailOptions = {
-      from: `"WebxKey Contact" <${process.env.HOSTINGER_FROM_EMAIL}>`,
+      from: `"WebxKey Scraping Service" <${process.env.HOSTINGER_FROM_EMAIL}>`,
       to: process.env.HOSTINGER_TO_EMAIL,
       replyTo: email,
-      subject: `New Project Inquiry: ${projectType}`,
+      subject: `New Scraping Service Inquiry: ${projectType}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; color: #333;">
-          <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">New Project Inquiry</h2>
+          <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">New Scraping Service Inquiry</h2>
           
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid #e2e8f0;">
             <tr>
@@ -74,11 +74,11 @@ export async function POST(request: Request) {
               <td style="padding: 12px; border: 1px solid #e2e8f0;">${country}</td>
             </tr>
             <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; background-color: #f8fafc;">Project Type</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; background-color: #f8fafc;">Service Type</td>
               <td style="padding: 12px; border: 1px solid #e2e8f0;">${projectType}</td>
             </tr>
             <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; background-color: #f8fafc;">Referral Source</td>
+              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; background-color: #f8fafc;">Required Service</td>
               <td style="padding: 12px; border: 1px solid #e2e8f0;">${referralSource}</td>
             </tr>
           </table>
@@ -89,7 +89,7 @@ export async function POST(request: Request) {
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.9em; color: #64748b;">
-            <p>This inquiry was submitted through the WebxKey contact form.</p>
+            <p>This inquiry was submitted through the WebxKey scraping service contact form.</p>
             <p style="font-size: 0.8em; color: #94a3b8;">
               Submitted on: ${new Date().toLocaleString()}
             </p>
@@ -97,21 +97,21 @@ export async function POST(request: Request) {
         </div>
       `,
       text: `
-NEW PROJECT INQUIRY
+NEW SCRAPING SERVICE INQUIRY
 
 Name: ${name}
 Email: ${email}
 Phone: ${phone || 'Not provided'}
 Country: ${country}
-Project Type: ${projectType}
-Referral Source: ${referralSource}
+Service Type: ${projectType}
+Required Service: ${referralSource}
 
 PROJECT DESCRIPTION:
 ${projectDescription}
 
 ---
 Submitted on: ${new Date().toLocaleString()}
-This inquiry was submitted through the WebxKey contact form.
+This inquiry was submitted through the WebxKey scraping service contact form.
       `
     };
 
@@ -120,7 +120,7 @@ This inquiry was submitted through the WebxKey contact form.
 
     return NextResponse.json({ 
       success: true,
-      message: 'Your inquiry has been submitted successfully!' 
+      message: 'Your scraping service inquiry has been submitted successfully!' 
     });
 
   } catch (error) {
