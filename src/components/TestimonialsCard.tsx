@@ -10,11 +10,11 @@ const Profile6 = "/Images/profile 6.png";
 
 const testimonials = [
   {
-    name: "Jason Sahli",
+    name: "Ishak Muhammathu Wazeem",
     company: "Tampa Bay Watersofteners",
     image: Profile1,
     review:
-      "Webxkey's innovative approach revitalized our online presence, driving remarkable growth, outstanding!",
+      "They create high-quality websites with exceptional performance for me. Thank you again for your service!",
   },
   {
     name: "Jessica Lee",
