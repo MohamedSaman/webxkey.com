@@ -1,69 +1,50 @@
-"use client";
-
+import { urlFor } from "@/sanity/lib/image";
+import { getFeaturedPosts } from "@/sanity/queries";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import dayjs from "dayjs";
 import Link from "next/link";
-import { getFeaturedPost, getRecentPosts } from "@/data/mockPosts";
 
-const Loading = () => {
-  return (
-    <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center h-[100vh]">
-      <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-cyan-500"></div>
-    </div>
-  );
-};
+// Define Post and Author interfaces
+interface Author {
+  name: string;
+  image?: any;
+}
 
-export default function FeaturedPosts() {
-  const [loading, setLoading] = useState(false);
+interface Post {
+  title: string;
+  slug: string;
+  excerpt?: string;
+  publishedAt: string;
+  mainImage?: any;
+  author?: Author;
+}
 
-  // Get featured post and recent posts (as fallback)
-  const featuredPost = getFeaturedPost();
-  const recentPosts = getRecentPosts(3);
-
-  // Use featured post if available, otherwise use recent posts
-  const postsToDisplay = featuredPost
-    ? [
-        featuredPost,
-        ...recentPosts
-          .filter((post) => post.slug !== featuredPost.slug)
-          .slice(0, 2),
-      ]
-    : recentPosts;
-
-  if (postsToDisplay.length === 0) {
+export default async function FeaturedPosts() {
+  const featuredPosts = await getFeaturedPosts(3);
+  if (featuredPosts?.length === 0) {
     return null;
   }
 
-  const handleNavigation = () => {
-    setLoading(true);
-  };
-
   return (
-    <div className="mt-10 mb-20">
-      {loading && <Loading />}
+    <div className="mt-10">
       <h2 className="text-2xl font-medium tracking-wide text-white">
         Featured <span className="text-blue-400">Posts</span>
       </h2>
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {postsToDisplay.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            onClick={handleNavigation}
-          >
+        {featuredPosts?.map((post: Post) => (
+          <Link key={post?.slug} href={`/blog/post/${post.slug}`}>
             <div className="group relative bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
               {/* Image container with gradient overlay */}
               <div className="relative h-48 w-full overflow-hidden">
-                {post.mainImage && (
+                {post?.mainImage && (
                   <>
                     <Image
-                      alt={post.mainImage.alt || post.title}
-                      src={post.mainImage.url}
+                      alt={post?.mainImage?.alt ?? post.title ?? ""}
+                      src={urlFor(post?.mainImage).url()}
                       width={800}
                       height={400}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      priority={featuredPost?.slug === post.slug}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-80" />
                   </>
@@ -73,35 +54,32 @@ export default function FeaturedPosts() {
               {/* Content container */}
               <div className="p-6 flex-1 flex flex-col">
                 <p className="text-sm text-gray-400">
-                  {dayjs(post._createdAt).format("MMMM D, YYYY")}
-                  {/* Only show updated date if it exists and is different */}
-                  {post._updatedAt &&
-                    !dayjs(post._createdAt).isSame(post._updatedAt, "day") && (
-                      <span className="normal-case ml-2">
-                        (updated {dayjs(post._updatedAt).format("MMMM D")})
-                      </span>
-                    )}
+                  {post?._createdAt
+                    ? dayjs(post._createdAt).format("MMMM D, YYYY")
+                    : "Date not available"}
                 </p>
                 <h2 className="text-xl font-bold mt-2 text-white group-hover:text-blue-400 transition-colors">
-                  {post.title}
+                  {post?.title}
                 </h2>
-                <p className="text-gray-300 mt-3 mb-4 flex-1">{post.excerpt}</p>
+                <p className="text-gray-300 mt-3 mb-4 flex-1">
+                  {post?.excerpt}
+                </p>
 
-                {/* Author and read more - only show if author exists */}
+                {/* Author and read more */}
                 <div className="mt-auto flex items-center justify-between">
-                  {post.author && (
+                  {post?.author && (
                     <div className="flex items-center gap-3">
-                      {post.author.image && (
+                      {post?.author?.image && (
                         <Image
-                          src={post.author.image}
-                          alt={post.author.name}
+                          src={urlFor(post?.author?.image).url()}
+                          alt="authorImage"
                           width={50}
                           height={50}
                           className="aspect-square size-6 rounded-full object-cover"
                         />
                       )}
                       <p className="text-gray-400 text-sm">
-                        {post.author.name}
+                        {post?.author?.name}
                       </p>
                     </div>
                   )}
@@ -126,12 +104,8 @@ export default function FeaturedPosts() {
                 </div>
               </div>
 
-              {/* Highlight featured post with a different decorative element */}
-              {featuredPost?.slug === post.slug ? (
-                <div className="absolute top-0 left-0 w-1 h-full bg-blue-500" />
-              ) : (
-                <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              )}
+              {/* Decorative element */}
+              <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </Link>
         ))}

@@ -5,7 +5,7 @@ import Container from "./container";
 import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { OtherPost } from "@/data/mockPosts";
+import { urlFor } from "@/sanity/lib/image";
 
 const Loading = () => {
   return (
@@ -14,6 +14,22 @@ const Loading = () => {
     </div>
   );
 };
+
+interface Author {
+  name: string;
+  image?: any;
+}
+
+interface OtherPost {
+  _id?: string;
+  slug: string;
+  title: string;
+  excerpt?: string;
+  _createdAt?: string;
+  _updatedAt?: string;
+  author?: Author;
+  mainImage?: any;
+}
 
 interface OtherPostsProps {
   otherPosts: OtherPost[];
@@ -52,10 +68,10 @@ export default function OtherPosts({
               {post.mainImage && (
                 <>
                   <Image
-                    src={post.mainImage.url}
+                    src={urlFor(post.mainImage).url()}
                     width={600}
                     height={300}
-                    alt={post.mainImage.alt || post.title}
+                    alt={post.mainImage?.alt || post.title || ""}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent opacity-70" />
@@ -66,15 +82,18 @@ export default function OtherPosts({
             {/* Content container */}
             <div className="p-5 flex-1 flex flex-col">
               <p className="text-xs text-gray-400">
-                {dayjs(post._createdAt).format("MMMM D, YYYY")}
+                {post._createdAt
+                  ? dayjs(post._createdAt).format("MMMM D, YYYY")
+                  : "Date not available"}
                 {post._updatedAt &&
+                  post._createdAt &&
                   !dayjs(post._createdAt).isSame(post._updatedAt, "day") && (
                     <span className="normal-case ml-2">
                       (updated {dayjs(post._updatedAt).format("MMMM D")})
                     </span>
                   )}
               </p>
-              <Link href={`/blog/${post.slug}`} onClick={handleNavigation}>
+              <Link href={`/blog/post/${post.slug}`} onClick={handleNavigation}>
                 <p className="text-lg font-semibold mt-1 text-white group-hover:text-blue-400 transition-colors">
                   {post.title}
                 </p>
@@ -88,8 +107,8 @@ export default function OtherPosts({
                 <div className="mt-4 flex items-center gap-2">
                   {post.author.image && (
                     <Image
-                      src={post.author.image}
-                      alt={post.author.name}
+                      src={urlFor(post.author.image).url()}
+                      alt={post.author.name || ""}
                       width={50}
                       height={50}
                       className="aspect-square size-5 rounded-full object-cover"

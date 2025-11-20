@@ -3,10 +3,18 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Remove 'output: export' to enable server components
-  output: 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        // Optionally, you can add these for more specific matching:
+        // port: '',
+        // pathname: '/images/**',
+      },
+    ],
+    // You can remove unoptimized: true if you're not doing static export
   },
   compiler: {
     styledComponents: true,

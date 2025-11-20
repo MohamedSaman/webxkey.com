@@ -13,8 +13,8 @@ export default async function BlogPage() {
     <div className="overflow-hidden text-white mt-2 md:mt-8 lg:mt-12 xl:mt-16">
       <Container>
         <Breadcrumbs items={breadcrumbs} />
-        <FeaturedPosts />
         <RecentPosts />
+        <FeaturedPosts />
       </Container>
     </div>
   );
