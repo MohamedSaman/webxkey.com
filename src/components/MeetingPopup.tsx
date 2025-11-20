@@ -229,7 +229,7 @@ const MeetingPopup = ({ onClose }: { onClose: () => void }) => {
           meetingTime: selectedTime,
           timezone: userTimezone,
           notes: notes,
-          businessEmail: "mohammedshn2002@gmail.com"
+          businessEmail: "nazar.farhan00@gmail.com"
         }),
       });
 
