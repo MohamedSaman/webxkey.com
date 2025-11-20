@@ -16,6 +16,7 @@ interface Post {
   slug: string;
   excerpt?: string;
   publishedAt: string;
+  _createdAt: string;
   mainImage?: any;
   author?: Author;
 }
@@ -28,84 +29,72 @@ export default async function FeaturedPosts() {
 
   return (
     <div className="mt-10">
-      <h2 className="text-2xl font-medium tracking-wide text-white">
+      <h2 className="text-2xl font-medium tracking-wide text-white mb-8">
         Featured <span className="text-blue-400">Posts</span>
       </h2>
-      <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {featuredPosts?.map((post: Post) => (
           <Link key={post?.slug} href={`/blog/post/${post.slug}`}>
-            <div className="group relative bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
-              {/* Image container with gradient overlay */}
+            <div className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col border border-gray-700">
+              {/* Image container */}
               <div className="relative h-48 w-full overflow-hidden">
                 {post?.mainImage && (
-                  <>
-                    <Image
-                      alt={post?.mainImage?.alt ?? post.title ?? ""}
-                      src={urlFor(post?.mainImage).url()}
-                      width={800}
-                      height={400}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-80" />
-                  </>
+                  <Image
+                    alt={post?.mainImage?.alt ?? post.title ?? ""}
+                    src={urlFor(post?.mainImage).url()}
+                    width={400}
+                    height={240}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 )}
               </div>
 
               {/* Content container */}
               <div className="p-6 flex-1 flex flex-col">
-                <p className="text-sm text-gray-400">
-                  {post?._createdAt
+                {/* Category tag */}
+                <div className="mb-3">
+                  <span className="inline-block px-3 py-1 text-xs font-medium bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30">
+                    WebxKey
+                  </span>
+                </div>
+
+                {/* Date - Improved with fallback */}
+                <p className="text-sm text-gray-400 mb-2">
+                  {post?.publishedAt
+                    ? dayjs(post.publishedAt).format("MMMM D, YYYY")
+                    : post?._createdAt
                     ? dayjs(post._createdAt).format("MMMM D, YYYY")
                     : "Date not available"}
                 </p>
-                <h2 className="text-xl font-bold mt-2 text-white group-hover:text-blue-400 transition-colors">
+
+                {/* Title */}
+                <h2 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-3 leading-tight">
                   {post?.title}
                 </h2>
-                <p className="text-gray-300 mt-3 mb-4 flex-1">
+
+                {/* Excerpt */}
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 flex-1">
                   {post?.excerpt}
                 </p>
 
-                {/* Author and read more */}
-                <div className="mt-auto flex items-center justify-between">
-                  {post?.author && (
-                    <div className="flex items-center gap-3">
-                      {post?.author?.image && (
-                        <Image
-                          src={urlFor(post?.author?.image).url()}
-                          alt="authorImage"
-                          width={50}
-                          height={50}
-                          className="aspect-square size-6 rounded-full object-cover"
-                        />
-                      )}
-                      <p className="text-gray-400 text-sm">
-                        {post?.author?.name}
-                      </p>
-                    </div>
-                  )}
-
-                  <span className="inline-flex items-center text-blue-400 group-hover:text-white group-hover:bg-blue-600 px-4 py-2 rounded-full text-sm font-medium transition-all border border-blue-400 group-hover:border-transparent">
-                    Read more
-                    <svg
-                      className="ml-2 w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                {/* Author */}
+                {post?.author && (
+                  <div className="flex items-center gap-3 pt-4 border-t border-gray-700">
+                    {post?.author?.image && (
+                      <Image
+                        src={urlFor(post?.author?.image).url()}
+                        alt="authorImage"
+                        width={32}
+                        height={32}
+                        className="rounded-full object-cover"
                       />
-                    </svg>
-                  </span>
-                </div>
+                    )}
+                    <p className="text-gray-400 text-sm">
+                      {post?.author?.name}
+                    </p>
+                  </div>
+                )}
               </div>
-
-              {/* Decorative element */}
-              <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </Link>
         ))}
