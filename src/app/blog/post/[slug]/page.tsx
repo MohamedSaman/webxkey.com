@@ -50,12 +50,12 @@ export default async function SinglePostPage({
   return (
     <>
       <Navbar />
-      <article className="max-w-7xl mx-auto py-8 md:py-12 px-4 sm:px-6 lg:px-8 text-gray-800 dark:text-gray-200">
+      <article className="max-w-7xl mx-auto py-8 md:py-12 px-4 sm:px-6 lg:px-8 text-white">
         <Breadcrumbs items={breadcrumbs} />
 
         {/* Article Header */}
         <header className="mb-12 md:mb-16">
-          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4 md:mb-6">
+          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-gray-300 mb-4 md:mb-6">
             {post._createdAt
               ? dayjs(post._createdAt).format("MMMM D, YYYY")
               : "Date not available"}
@@ -67,7 +67,7 @@ export default async function SinglePostPage({
               )}
           </p>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight text-white">
             {post.title}
           </h1>
 
@@ -83,12 +83,12 @@ export default async function SinglePostPage({
             )}
             <div>
               {post.author?.name && (
-                <p className="font-medium text-sm md:text-base">
+                <p className="font-medium text-sm md:text-base text-white">
                   {post.author.name}
                 </p>
               )}
               {post._createdAt && (
-                <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-xs md:text-sm text-gray-300">
                   {dayjs(post._createdAt).format("MMMM D, YYYY")}
                   <span className="mx-1 md:mx-2">•</span>
                   {Math.ceil((post.body?.length || 0) / 1500) || 5} min read
@@ -110,7 +110,7 @@ export default async function SinglePostPage({
               priority
             />
             {post.mainImage.caption && (
-              <figcaption className="text-center text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-3">
+              <figcaption className="text-center text-xs md:text-sm text-gray-300 mt-2 md:mt-3">
                 {post.mainImage.caption}
               </figcaption>
             )}
@@ -118,32 +118,38 @@ export default async function SinglePostPage({
         )}
 
         {/* Excerpt */}
-        {post.excerpt && (
-          <div className="mb-12 md:mb-16 p-4 md:p-6 bg-blue-50 dark:bg-gray-800 rounded-xl border-l-4 border-blue-500">
-            <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-blue-800 dark:text-blue-300">
-              Key Takeaways
-            </h2>
-            <p className="text-sm md:text-base text-gray-700 dark:text-gray-300">
-              {post.excerpt}
-            </p>
-          </div>
-        )}
+       {post.excerpt && (
+  <div className="mb-12 md:mb-16 p-4 md:p-6 bg-blue-50 dark:bg-gray-800 rounded-xl border-l-4 border-blue-500">
+    <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-blue-800 dark:text-blue-300">
+      Key Takeaways
+    </h2>
+    <div className="text-sm md:text-base text-gray-700 dark:text-gray-300">
+      <p className="break-words whitespace-normal overflow-visible leading-relaxed">
+        {post.excerpt}
+      </p>
+    </div>
+  </div>
+)}
 
         {/* Article Content */}
         <div
-          className="prose prose-sm sm:prose-base lg:prose-lg max-w-none dark:prose-invert 
-                      prose-headings:font-serif prose-headings:font-normal
-                      prose-a:text-blue-600 hover:prose-a:text-blue-800 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300
-                      prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-gray-800
+          className="prose prose-sm sm:prose-base lg:prose-lg max-w-none 
+                      prose-headings:font-serif prose-headings:font-normal prose-headings:text-white
+                      prose-a:text-blue-300 hover:prose-a:text-blue-200
+                      prose-blockquote:border-l-blue-500 prose-blockquote:bg-gray-800
                       prose-img:rounded-xl prose-img:shadow-md
                       prose-ul:list-disc prose-ol:list-decimal
                       prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:mt-12 sm:prose-h2:mt-16 prose-h2:mb-6 sm:prose-h2:mb-8
                       prose-h3:text-lg sm:prose-h3:text-xl prose-h3:mt-8 sm:prose-h3:mt-10 prose-h3:mb-4 sm:prose-h3:mb-6
-                      prose-p:my-4 sm:prose-p:my-6 prose-p:leading-relaxed
-                      prose-li:my-2 sm:prose-li:my-3
+                      prose-p:my-4 sm:prose-p:my-6 prose-p:leading-relaxed prose-p:text-white
+                      prose-li:my-2 sm:prose-li:my-3 prose-li:text-white
                       prose-pre:my-6 sm:prose-pre:my-8
-                      prose-blockquote:my-6 sm:prose-blockquote:my-8
-                      mx-auto sm:mx-0"
+                      prose-blockquote:my-6 sm:prose-blockquote:my-8 prose-blockquote:text-white
+                      prose-strong:text-white
+                      prose-em:text-white
+                      prose-code:text-white
+                      prose-figcaption:text-gray-300
+                      mx-auto sm:mx-0 text-white"
         >
           <PortableText
             value={post.body || []}
@@ -159,15 +165,15 @@ export default async function SinglePostPage({
                       className="rounded-xl shadow-md"
                     />
                     {value.caption && (
-                      <figcaption className="text-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-3">
+                      <figcaption className="text-center text-xs sm:text-sm text-gray-300 mt-2 sm:mt-3">
                         {value.caption}
                       </figcaption>
                     )}
                   </div>
                 ),
                 code: ({ value }) => (
-                  <pre className="bg-gray-100 dark:bg-gray-800 p-3 sm:p-4 rounded-lg overflow-x-auto my-6 sm:my-8">
-                    <code>{value.code}</code>
+                  <pre className="bg-gray-800 p-3 sm:p-4 rounded-lg overflow-x-auto my-6 sm:my-8 text-white">
+                    <code className="text-white">{value.code}</code>
                   </pre>
                 ),
                 separator: ({ value }) => {
@@ -185,32 +191,32 @@ export default async function SinglePostPage({
               },
               block: {
                 h2: ({ children }) => (
-                  <h2 className="group relative text-xl sm:text-2xl md:text-3xl font-semibold mt-12 sm:mt-16 mb-6 sm:mb-8">
+                  <h2 className="group relative text-xl sm:text-2xl md:text-3xl font-semibold mt-12 sm:mt-16 mb-6 sm:mb-8 text-white">
                     <span className="block">{children}</span>
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="group relative text-lg sm:text-xl md:text-2xl font-medium mt-8 sm:mt-10 mb-4 sm:mb-6">
+                  <h3 className="group relative text-lg sm:text-xl md:text-2xl font-medium mt-8 sm:mt-10 mb-4 sm:mb-6 text-white">
                     <span className="block">{children}</span>
                   </h3>
                 ),
                 normal: ({ children }) => (
-                  <p className="leading-relaxed mb-4 sm:mb-6">{children}</p>
+                  <p className="leading-relaxed mb-4 sm:mb-6 text-white">{children}</p>
                 ),
                 blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-blue-500 bg-blue-50 dark:bg-gray-800 pl-4 sm:pl-6 py-4 sm:py-5 my-6 sm:my-8 rounded-r-lg">
+                  <blockquote className="border-l-4 border-blue-500 bg-gray-800 pl-4 sm:pl-6 py-4 sm:py-5 my-6 sm:my-8 rounded-r-lg text-white">
                     {children}
                   </blockquote>
                 ),
               },
               list: {
                 bullet: ({ children }) => (
-                  <ul className="list-disc pl-5 sm:pl-6 space-y-2 sm:space-y-3">
+                  <ul className="list-disc pl-5 sm:pl-6 space-y-2 sm:space-y-3 text-white">
                     {children}
                   </ul>
                 ),
                 number: ({ children }) => (
-                  <ol className="list-decimal pl-5 sm:pl-6 space-y-2 sm:space-y-3">
+                  <ol className="list-decimal pl-5 sm:pl-6 space-y-2 sm:space-y-3 text-white">
                     {children}
                   </ol>
                 ),
@@ -224,18 +230,18 @@ export default async function SinglePostPage({
                     <Link
                       href={value.href}
                       rel={rel}
-                      className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline"
+                      className="text-blue-300 hover:text-blue-200 underline"
                     >
                       {children}
                     </Link>
                   );
                 },
                 strong: ({ children }) => (
-                  <strong className="font-semibold">{children}</strong>
+                  <strong className="font-semibold text-white">{children}</strong>
                 ),
-                em: ({ children }) => <em className="italic">{children}</em>,
+                em: ({ children }) => <em className="italic text-white">{children}</em>,
                 code: ({ children }) => (
-                  <code className="bg-gray-100 dark:bg-gray-700 px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm font-mono">
+                  <code className="bg-gray-700 px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm font-mono text-white">
                     {children}
                   </code>
                 ),
@@ -246,7 +252,7 @@ export default async function SinglePostPage({
 
         {/* Article Footer */}
         {post.author && (
-          <footer className="mt-16 sm:mt-20 pt-8 sm:pt-12 border-t border-gray-200 dark:border-gray-700">
+          <footer className="mt-16 sm:mt-20 pt-8 sm:pt-12 border-t border-gray-600">
             <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-8">
               {post.author.image && (
                 <Image
@@ -258,10 +264,10 @@ export default async function SinglePostPage({
                 />
               )}
               <div>
-                <h3 className="text-lg sm:text-xl font-medium mb-2 sm:mb-4">
+                <h3 className="text-lg sm:text-xl font-medium mb-2 sm:mb-4 text-white">
                   About {post.author.name}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                <p className="text-sm sm:text-base text-gray-300">
                   {post.author.bio ||
                     "The author is a contributor to our blog."}
                 </p>
