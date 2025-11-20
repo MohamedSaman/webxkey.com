@@ -102,10 +102,9 @@ const DataScrapingClient: React.FC = () => {
               {/* Image on left for desktop */}
               <motion.div
                 className="w-full lg:w-1/2"
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: false, amount: 0.2 }}
+                initial={{ opacity: 1, x: 0 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2 }}
               >
                 <Image
                   src="/Images/web scraping 1.jpg"
@@ -113,16 +112,18 @@ const DataScrapingClient: React.FC = () => {
                   className="w-full h-auto rounded-lg md:rounded-xl lg:rounded-2xl border-2 border-gray-200/10 shadow-2xl hover:scale-[1.01] transition-all duration-300"
                   width={600}
                   height={400}
+                  priority
+                  fetchPriority="high"
+                  quality={85}
                 />
               </motion.div>
 
               {/* Text content on right for desktop */}
               <motion.div
                 className="w-full lg:w-1/2"
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: false, amount: 0.2 }}
+                initial={{ opacity: 1, x: 0 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2 }}
               >
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">
                   Advanced Web Scraping
