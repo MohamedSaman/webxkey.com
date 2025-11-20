@@ -188,7 +188,7 @@ const Footer = () => {
             <button className="bg-gradient-to-r from-[#013e84] to-[#0ea0c4] text-white px-6 py-3 rounded-md font-medium w-fit md:w-auto hover:from-[#013e84] hover:to-[#0ea0c4] hover:shadow-lg transition-all">
               Join our newsletter
             </button>
-            <form onSubmit={handleEmailSubmit} className="relative mt-6">
+            <form onSubmit={handleEmailSubmit} className="relative mt-4">
               <input
                 type="email"
                 placeholder="Enter your email address"
