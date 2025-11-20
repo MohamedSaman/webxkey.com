@@ -91,7 +91,7 @@ const ServicesClient = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-400/10 -z-10"></div>
                 <React.Suspense fallback={<ImageSkeleton />}>
                   <Image
-                    src="/Images/services1.webp"
+                    src="/Images/services-n.png"
                     alt="Digital Marketing Services"
                     className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     width={800}

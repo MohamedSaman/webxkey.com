@@ -83,7 +83,7 @@ const AppDevelopment = () => {
                 <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-300">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-400/10 -z-10"></div>
                   <Image
-                    src="/Images/app-m.webp"
+                    src="/Images/mobile-n.png"
                     alt="App Development Example"
                     className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     width={800}
