@@ -50,11 +50,14 @@ export default async function SinglePostPage({
   return (
     <>
       <Navbar />
-      <article className="max-w-7xl mx-auto py-8 md:py-12 px-4 sm:px-6 lg:px-8 text-white">
-        <Breadcrumbs items={breadcrumbs} />
+      <article className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-white">
+         {/* Reduced breadcrumbs margin */}
+        <div className="mb-4">
+          <Breadcrumbs items={breadcrumbs} />
+        </div>
 
-        {/* Article Header */}
-        <header className="mb-12 md:mb-16">
+        {/* Article Header - Reduced spacing */}
+        <header className="mb-8 md:mb-10">
           <p className="font-mono text-xs font-semibold uppercase tracking-widest text-gray-300 mb-4 md:mb-6">
             {post._createdAt
               ? dayjs(post._createdAt).format("MMMM D, YYYY")
@@ -248,7 +251,7 @@ export default async function SinglePostPage({
 
         {/* Article Footer */}
         {post.author && (
-          <footer className="mt-16 sm:mt-20 pt-8 sm:pt-12 border-t border-gray-200 dark:border-gray-700">
+          <footer className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-8">
               {post.author.image && (
                 <Image

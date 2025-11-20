@@ -26,7 +26,7 @@ export default async function RecentPosts() {
   }
 
   return (
-    <div className="mt-20">
+    <div className="mt-6">
       <h2 className="text-2xl font-medium tracking-wide text-white mb-8">
         Recent <span className="text-blue-400">Posts</span>
       </h2>

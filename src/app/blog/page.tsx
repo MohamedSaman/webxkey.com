@@ -10,8 +10,8 @@ export default async function BlogPage() {
   ];
 
   return (
-    <div className="overflow-hidden text-white mt-2 md:mt-8 lg:mt-12 xl:mt-16">
-      <Container>
+    <div className="overflow-hidden text-white">
+      <Container className="space-y-4">
         <Breadcrumbs items={breadcrumbs} />
         <RecentPosts />
         <FeaturedPosts />
