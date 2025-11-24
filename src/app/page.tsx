@@ -16,7 +16,7 @@ import ServicesCards from "@/components/ServicesCards";
 // Lazy load components that appear below the fold or are less critical
 // const ProjectsSection = lazy(() => import("../components/ProjectsSection"));
 const Testimonials = lazy(() => import("../components/Testimonials"));
-const TestimonialCard = lazy(() => import("../components/TestimonialsCard"));
+// const TestimonialCard = lazy(() => import("../components/TestimonialsCard"));
 
 // Optimized Framer Motion import
 const MotionSection = dynamic(
@@ -148,7 +148,7 @@ const HomePage = () => {
         </Suspense>
       </MotionSection>
 
-      {/* TESTIMONIAL CARDS */}
+      {/* TESTIMONIAL CARDS
       <MotionSection
         variants={fadeInUp}
         initial="hidden"
@@ -158,7 +158,7 @@ const HomePage = () => {
         <Suspense fallback={<LoadingSkeleton />}>
           <TestimonialCard />
         </Suspense>
-      </MotionSection>
+      </MotionSection> */}
 
       {/* BANNER */}
       <MotionSection
