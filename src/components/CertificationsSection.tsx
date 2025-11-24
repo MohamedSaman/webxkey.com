@@ -18,9 +18,7 @@ const CertificationsSection = () => {
     name: "",
     email: "",
     company: "",
-    requestType: "partnership",
     message: "",
-    documentRequested: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -44,7 +42,6 @@ const CertificationsSection = () => {
       image: "/Images/webxkey br certificate-1.png",
       description: "Official business registration documents and licenses",
     },
-   
   ];
 
   const openModal = (cert: Certification) => {
@@ -73,7 +70,7 @@ const CertificationsSection = () => {
 
   const handleInputChange = (
     e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      HTMLInputElement | HTMLTextAreaElement
     >
   ) => {
     const { name, value } = e.target;
@@ -88,17 +85,29 @@ const CertificationsSection = () => {
     setIsSubmitting(true);
     setSubmitError(null);
 
+    // Client-side validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitError("All fields are required");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitError("Please enter a valid email address");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch(
-        "https://webxkey.com/api/submit-partnership",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch('/api/submit-partnership', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       // First check the content type
       const contentType = response.headers.get("content-type");
@@ -120,9 +129,7 @@ const CertificationsSection = () => {
           name: "",
           email: "",
           company: "",
-          requestType: "partnership",
           message: "",
-          documentRequested: "",
         });
       } else {
         throw new Error(result.message || "Submission failed");
@@ -191,7 +198,7 @@ const CertificationsSection = () => {
           </motion.p>
         </div>
 
-<div className="flex justify-center">
+        <div className="flex justify-center">
           {certifications.map((cert, index) => (
             <motion.div
               key={index}
@@ -356,13 +363,10 @@ const CertificationsSection = () => {
               {!submitSuccess ? (
                 <>
                   <h3 className="text-2xl font-semibold text-white mb-2">
-                    {formData.requestType === "partnership"
-                      ? "Partnership Inquiry"
-                      : "Document Request"}
+                    Partnership Inquiry
                   </h3>
                   <p className="text-gray-300 mb-6">
-                    Please fill out the form and we&#39;ll get back to you
-                    shortly.
+                    Please fill out the form and we'll get back to you shortly.
                   </p>
                 </>
               ) : (
@@ -398,22 +402,12 @@ const CertificationsSection = () => {
               {!submitSuccess ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label
-                      htmlFor="requestType"
-                      className="block text-sm font-medium text-gray-300 mb-1"
-                    >
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Request Type
                     </label>
-                    <select
-                      id="requestType"
-                      name="requestType"
-                      value={formData.requestType}
-                      onChange={handleInputChange}
-                      className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#72e3ff]"
-                    >
-                      <option value="partnership">Partnership Inquiry</option>
-                      <option value="documents">Document Request</option>
-                    </select>
+                    <div className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white">
+                      Partnership Inquiry
+                    </div>
                   </div>
 
                   <div>
@@ -431,6 +425,7 @@ const CertificationsSection = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#72e3ff]"
+                      placeholder="Enter your full name"
                     />
                   </div>
 
@@ -449,6 +444,7 @@ const CertificationsSection = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#72e3ff]"
+                      placeholder="Enter your email address"
                     />
                   </div>
 
@@ -466,52 +462,26 @@ const CertificationsSection = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#72e3ff]"
+                      placeholder="Enter your company name (optional)"
                     />
                   </div>
-
-                  {formData.requestType === "documents" && (
-                    <div>
-                      <label
-                        htmlFor="documentRequested"
-                        className="block text-sm font-medium text-gray-300 mb-1"
-                      >
-                        Document Requested*
-                      </label>
-                      <select
-                        id="documentRequested"
-                        name="documentRequested"
-                        value={formData.documentRequested}
-                        onChange={handleInputChange}
-                        required={formData.requestType === "documents"}
-                        className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#72e3ff]"
-                      >
-                        <option value="">Select a document</option>
-                        {certifications.map((cert, index) => (
-                          <option key={index} value={cert.title}>
-                            {cert.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
 
                   <div>
                     <label
                       htmlFor="message"
                       className="block text-sm font-medium text-gray-300 mb-1"
                     >
-                      {formData.requestType === "partnership"
-                        ? "Partnership Details*"
-                        : "Additional Information"}
+                      Partnership Details*
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      required={formData.requestType === "partnership"}
+                      required
                       rows={4}
                       className="w-full bg-[#013e84]/30 border border-[#038ed3]/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#72e3ff]"
+                      placeholder="Tell us about your partnership proposal..."
                     ></textarea>
                   </div>
 
