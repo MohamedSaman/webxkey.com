@@ -22,7 +22,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Mohamed Saman",
     title: "Software Engineer Bsc & BEng",
-    image: "/Images/Mohamed Saman.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "https://www.linkedin.com/in/mohamed-saman-linked/",
   },
 
