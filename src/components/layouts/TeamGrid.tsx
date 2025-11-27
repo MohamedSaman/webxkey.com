@@ -16,20 +16,20 @@ const teamMembers: TeamMember[] = [
   {
     name: "Farhan Ahmed",
     title: "Co-Founder",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/farhan-nazar-212480107/",
   },
   {
     name: "Mohamed Saman",
     title: "Software Engineer Bsc & BEng",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/mohamed-saman-linked/",
   },
 
    {
     name: "Suhaib Malik",
     title: "HR",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/shuaib-malik-4755812a3/",
   },
  
@@ -38,7 +38,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Mohammed Akmal",
     title: "Web Developer Intern",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/mohamed-akmal",
   },
   
@@ -46,34 +46,34 @@ const teamMembers: TeamMember[] = [
   {
     name: "Mohammed Minhaj",
     title: "Web Developer Intern",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/mohammed-minhaj-a5721a29a/",
   },
 
  {
     name: "Mohamad Sahan",
     title: "Web Developer Intern",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/mohamad-sahan",
   },
   {
     name: "Basith Ahamad",
     title: "Web Developer Intern",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "https://www.linkedin.com/in/basith-ahamad-59591630a",
   },
 
    {
     name: "Wang Xing",
     title: "Blockchain Developer",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "",
   },
 
    {
     name: "Fazeen Nasar",
     title: "Senior Software Engineer",
-    image: "/Images/defaultProfile.png",
+    image: "/Images/defaultP.png",
     linkedin: "",
   },
 
