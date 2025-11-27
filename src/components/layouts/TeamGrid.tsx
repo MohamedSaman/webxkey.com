@@ -53,8 +53,14 @@ const teamMembers: TeamMember[] = [
  {
     name: "Mohamad Sahan",
     title: "Web Developer Intern",
-    image: "/Images/Sahan.png",
-    linkedin: "www.linkedin.com/in/mohamad-sahan",
+    image: "/Images/defaultProfile.png",
+    linkedin: "https://www.linkedin.com/in/mohamad-sahan",
+  },
+  {
+    name: "Basith Ahamad",
+    title: "Web Developer Intern",
+    image: "/Images/defaultProfile.png",
+    linkedin: "https://www.linkedin.com/in/basith-ahamad-59591630a",
   },
 
    {
