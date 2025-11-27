@@ -16,20 +16,20 @@ const teamMembers: TeamMember[] = [
   {
     name: "Farhan Ahmed",
     title: "Co-Founder",
-    image: "/Images/Farhan.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "https://www.linkedin.com/in/farhan-nazar-212480107/",
   },
   {
     name: "Mohamed Saman",
     title: "Software Engineer Bsc & BEng",
-    image: "/Images/Saman_webxkey.png",
+    image: "/Images/Mohamed Saman.png",
     linkedin: "https://www.linkedin.com/in/mohamed-saman-linked/",
   },
 
    {
     name: "Suhaib Malik",
     title: "HR",
-    image: "/Images/Malik_webxkey.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "https://www.linkedin.com/in/shuaib-malik-4755812a3/",
   },
  
@@ -38,7 +38,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Mohammed Akmal",
     title: "Web Developer Intern",
-    image: "/Images/Akmal_webxkey.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "https://www.linkedin.com/in/mohamed-akmal",
   },
   
@@ -46,7 +46,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Mohammed Minhaj",
     title: "Web Developer Intern",
-    image: "/Images/Minhaj_webxkey.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "https://www.linkedin.com/in/mohammed-minhaj-a5721a29a/",
   },
 
@@ -66,14 +66,14 @@ const teamMembers: TeamMember[] = [
    {
     name: "Wang Xing",
     title: "Blockchain Developer",
-    image: "/Images/team 2.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "",
   },
 
    {
     name: "Fazeen Nasar",
     title: "Senior Software Engineer",
-    image: "/Images/team 5.png",
+    image: "/Images/defaultProfile.png",
     linkedin: "",
   },
 
