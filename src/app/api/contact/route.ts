@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const { name, email, phone, country, projectType, referralSource, projectDescription }: EmailRequestBody = body;
 
     // Validate inputs
-    if (!name || !email || !country || !projectType || !referralSource || !projectDescription) {
+    if (!name || !email || !phone || !country || !projectType || !referralSource || !projectDescription) {
       return NextResponse.json({ 
         success: false,
         message: 'All fields are required' 

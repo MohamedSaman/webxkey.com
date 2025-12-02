@@ -197,6 +197,7 @@ const ContactForm: React.FC = () => {
                     onChange={handleChange}
                     placeholder="+1 234 567 8900"
                     className="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   />
                 </div>
                 <div>
