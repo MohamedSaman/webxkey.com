@@ -16,6 +16,15 @@ export const postType = defineType({
       type: 'slug',
       options: {
         source: 'title',
+        slugify: (input: string) => 
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-')
+            .replace(/[^\w-]+/g, '')
+            .replace(/--+/g, '-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, ''),
       },
     }),
     defineField({
@@ -59,6 +68,13 @@ export const postType = defineType({
     defineField({
       name: 'body',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'isFeatured',
+      title: 'Featured Post',
+      type: 'boolean',
+      description: 'Mark this post as featured to display it prominently',
+      initialValue: false,
     }),
   ],
   preview: {

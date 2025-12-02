@@ -39,10 +39,13 @@ export default async function SinglePostPage({
     notFound();
   }
 
+// Extract main title before dash for breadcrumb (e.g., "Advanced CRM Solutions")
+  const breadcrumbTitle = post.title.split('–')[0].trim();
+
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
-    { label: `${slug}`, href: `/blog/post/${slug}` },
+    { label: breadcrumbTitle, href: `/blog/${slug}` },
   ];
 
   const otherPosts = await getOtherPosts(slug, 3);
