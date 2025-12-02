@@ -19,6 +19,16 @@ export const postType = defineType({
       },
     }),
     defineField({
+      name: 'keywords',
+      title: 'SEO Keywords',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'Add keywords for SEO meta tags (e.g., "website development", "app development")',
+      options: {
+        layout: 'tags',
+      },
+    }),
+    defineField({
       name: 'author',
       type: 'reference',
       to: {type: 'author'},
