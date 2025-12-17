@@ -55,6 +55,7 @@ export default function ClientLayout({
       "/about-us": "About Us - Webxkey",
       "/contact": "Contact Us - Webxkey",
     };
+    
 
     document.title = titleMap[pathname] || "Webxkey";
 

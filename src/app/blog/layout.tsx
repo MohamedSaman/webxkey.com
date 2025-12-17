@@ -12,5 +12,5 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return <>{children}</>;
-  
+  console.log("Blog layout loaded");
 }
