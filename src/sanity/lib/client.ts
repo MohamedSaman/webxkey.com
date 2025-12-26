@@ -9,7 +9,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: isDevelopment ? false : true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: false, // Disabled for immediate updates
   token: developerToken,
 });
 
@@ -17,16 +17,16 @@ export const clientFetch = <const QueryString extends string>({
   query,
   params = {},
   tags = [],
-  // revalidate = 0,
 }: {
   query: QueryString;
   params?: QueryParams;
   tags?: string[];
-  // revalidate?: number | false;
 }) => {
   return client.fetch(query, params, {
+    cache: 'no-store',
     next: {
       tags,
+      revalidate: 0,
     },
   });
 };

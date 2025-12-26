@@ -118,13 +118,13 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`w-full z-50 text-white p-4 flex flex-col md:flex-row justify-between items-center transition-all ${
+        className={`w-full z-50 text-white p-4 flex flex-col md:flex-row justify-center items-center transition-all ${
           scrolled
             ? "bg-gray-900 bg-opacity-90 backdrop-blur-sm"
             : "bg-transparent"
         }`}
       >
-        <div className="w-full md:w-auto flex justify-between items-center px-2">
+        <div className="w-full md:w-auto flex justify-between items-center px-2 md:absolute md:left-4">
           {/* Logo on the left */}
           <div className="text-2xl font-bold">
             <Link
@@ -152,7 +152,7 @@ const Navbar = () => {
         </div>
 
         {/* Updated Desktop Navigation with proper list structure */}
-        <ul className="hidden md:flex items-center space-x-4 text-[15px] font-medium ml-auto mr-4">
+        <ul className="hidden md:flex items-center space-x-4 text-[15px] font-medium">
           <li>
             <NavItem href="/" label="Home" />
           </li>
@@ -237,7 +237,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden md:block md:absolute md:right-4">
           <button
             className="bg-gradient-to-r from-teal-500 to-cyan-500 font-medium text-[15px] px-5 py-2 rounded gap-2 flex items-center transition-colors hover:from-cyan-500 hover:to-teal-500 cursor-pointer"
             onClick={() => setShowMeetingPopup(true)}

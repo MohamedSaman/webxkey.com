@@ -66,6 +66,13 @@ export const postType = defineType({
       type: 'datetime',
     }),
     defineField({
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+      description: 'A brief summary of the post (recommended: 150-160 characters)',
+      validation: Rule => Rule.max(200),
+    }),
+    defineField({
       name: 'body',
       type: 'blockContent',
     }),
