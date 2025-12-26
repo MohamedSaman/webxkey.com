@@ -242,6 +242,7 @@ const ContactForm: React.FC = () => {
                     <option>Social media marketing</option>
                     <option>Website Development</option>
                     <option>App Development</option>
+                    <option>AI Solutions</option>
                     <option>Brand Identity</option>
                     <option>SEO Optimization</option>
                     <option>Site Bugs Fixing</option>

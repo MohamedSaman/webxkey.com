@@ -159,9 +159,9 @@ const Hero: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden py-0 md:py-4 bg-gradient-to-b from-transparent to-gray-900/20"
+        className="relative overflow-hidden py-0 md:py-1 bg-gradient-to-b from-transparent to-gray-900/20"
       >
-        <div className="flex flex-col items-center justify-center mb-6 md:mb-8 px-6">
+        <div className="flex flex-col items-center justify-center mb-0 md:mb-1 px-6">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

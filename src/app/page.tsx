@@ -43,7 +43,7 @@ const fadeInUp: Variants = {
 
 const HomePage = () => {
   return (
-    <div className="space-y-16">
+    <div className="space-y-2">
       {/* HERO SECTION */}
       {/*       <section>
         <div className="text-center py-10 bg-transparent">

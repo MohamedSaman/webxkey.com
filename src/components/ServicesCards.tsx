@@ -66,10 +66,10 @@ const services = [
   {
     id: 7,
     icon: <FiAward className="w-8 h-8" />,
-    title: "Brand Identity",
+    title: "AI Solutions",
     description:
-      "Develop a cohesive brand identity that resonates with your audience. From logos to style guides, we create visual systems that communicate your unique value.",
-    route: "/brand-identity",
+      "Integrate artificial intelligence into your business processes. From chatbots to predictive analytics, we develop AI-driven solutions that enhance efficiency and decision-making.",
+    route: "/ai-services",
   },
   {
     id: 8,

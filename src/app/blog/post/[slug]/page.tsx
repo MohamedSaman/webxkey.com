@@ -1,6 +1,4 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import OtherPosts from "@/components/otherPosts";
 import { urlFor } from "@/sanity/lib/image";
 import { getOtherPosts, getPost } from "@/sanity/queries";
@@ -52,7 +50,6 @@ export default async function SinglePostPage({
 
   return (
     <>
-      <Navbar />
       <article className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-white">
          {/* Reduced breadcrumbs margin */}
         <div className="mb-4">
@@ -280,7 +277,6 @@ export default async function SinglePostPage({
       </article>
 
       <OtherPosts otherPosts={otherPosts} />
-      <Footer />
     </>
   );
 }

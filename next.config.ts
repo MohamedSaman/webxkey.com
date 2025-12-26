@@ -14,10 +14,20 @@ const nextConfig: NextConfig = {
         // pathname: '/images/**',
       },
     ],
+    qualities: [75, 85],
     // You can remove unoptimized: true if you're not doing static export
   },
   compiler: {
     styledComponents: true,
+  },
+  // Disable caching issues in development
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+  // Improve development experience
+  experimental: {
+    webpackBuildWorker: true,
   },
 };
 

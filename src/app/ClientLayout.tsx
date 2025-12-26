@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "@/app/styles/home.css";
 
 export default function ClientLayout({
@@ -23,8 +24,9 @@ export default function ClientLayout({
     "/ui-ux-design/",
     "/social-media-marketing/",
     "/seo-services/",
+    "/ai-services/",
     "/careers/",
-    "/team/",
+    // "/team/",
     "/about-us/",
     "/contact/",
     "/project/",
@@ -75,13 +77,16 @@ export default function ClientLayout({
     }
   }, [pathname]); */
 
-  const shouldShowNavFooter = validRoutes.includes(pathname || "");
+  // Check if path is valid or a dynamic blog post route
+  const isBlogPost = pathname?.startsWith("/blog/post/");
+  const shouldShowNavFooter = validRoutes.includes(pathname || "") || isBlogPost;
 
   return (
     <>
       {shouldShowNavFooter && <Navbar />}
       <main className="flex-grow">{children}</main>
       {shouldShowNavFooter && <Footer />}
+      {shouldShowNavFooter && <WhatsAppButton />}
     </>
   );
 }

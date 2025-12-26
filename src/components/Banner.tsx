@@ -12,7 +12,7 @@ const Banner = () => {
   return (
     <>
       <motion.div
-        className="bg-transparent flex justify-center items-center py-10 px-5"
+        className="bg-transparent flex justify-center items-center py-4 px-5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}

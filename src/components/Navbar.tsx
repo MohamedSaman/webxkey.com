@@ -9,6 +9,7 @@ import {
   FaTimes,
   FaChevronDown,
   FaChevronUp,
+  
 } from "react-icons/fa";
 import {
   MdDesignServices,
@@ -20,6 +21,7 @@ import { TbSeo, TbBrandWordpress } from "react-icons/tb";
 import { SiAdobexd } from "react-icons/si";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { BiCodeCurly } from "react-icons/bi";
+import { HiSparkles } from "react-icons/hi";
 import Image from "next/image";
 import MeetingPopup from "./MeetingPopup";
 
@@ -84,7 +86,7 @@ const Navbar = () => {
     return (
       <Link
         href={href}
-        className={`flex items-center gap-2 px-4 py-2 transition-colors ${
+        className={`flex items-center gap-2 px-3 py-2 transition-colors ${
           isActive ? "text-blue-400" : "text-white hover:text-gray-300"
         } ${className}`}
         onClick={(e) => {
@@ -150,7 +152,7 @@ const Navbar = () => {
         </div>
 
         {/* Updated Desktop Navigation with proper list structure */}
-        <ul className="hidden md:flex items-center space-x-6 text-lg font-semibold">
+        <ul className="hidden md:flex items-center space-x-4 text-[15px] font-medium ml-auto mr-4">
           <li>
             <NavItem href="/" label="Home" />
           </li>
@@ -203,6 +205,11 @@ const Navbar = () => {
                   icon={<BiCodeCurly />}
                 />
                 <NavItem
+                  href="/ai-services/"
+                  label="AI Services"
+                  icon={<HiSparkles />}
+                />
+                <NavItem
                   href="/wordpress-website-designing-services/"
                   label="WordPress Services"
                   icon={<TbBrandWordpress />}
@@ -211,11 +218,14 @@ const Navbar = () => {
             )}
           </li>
           <li>
-            <NavItem href="/careers/" label="Careers" />
+            <NavItem href="/ai-services/" label="AI Services"  />
           </li>
           <li>
-            <NavItem href="/team/" label="Team" />
+            <NavItem href="/careers/" label="Careers" />
           </li>
+          {/* <li>
+            <NavItem href="/team/" label="Team" />
+          </li> */}
           <li>
             <NavItem href="/about-us/" label="About Us" />
           </li>
@@ -229,7 +239,7 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <button
-            className="bg-gradient-to-r from-teal-500 to-cyan-500 font-bold px-4 py-2 rounded gap-2 flex items-center transition-colors hover:from-cyan-500 hover:to-teal-500 cursor-pointer"
+            className="bg-gradient-to-r from-teal-500 to-cyan-500 font-medium text-[15px] px-5 py-2 rounded gap-2 flex items-center transition-colors hover:from-cyan-500 hover:to-teal-500 cursor-pointer"
             onClick={() => setShowMeetingPopup(true)}
           >
             Schedule a Meeting <FaArrowRight />
@@ -369,6 +379,15 @@ const Navbar = () => {
                   </li>
                   <li className="w-full">
                     <NavItem
+                      href="/ai-services/"
+                      label="AI Services"
+                      closeMenu
+                      className="text-base pl-4"
+                      icon={<HiSparkles />}
+                    />
+                  </li>
+                  <li className="w-full">
+                    <NavItem
                       href="/wordpress-website-designing-services/"
                       label="WordPress Designing Services"
                       closeMenu
@@ -382,20 +401,30 @@ const Navbar = () => {
 
             <li className="w-full">
               <NavItem
+                href="/ai-services/"
+                label="AI Services"
+                closeMenu
+                className="text-lg"
+                
+              />
+            </li>
+
+            <li className="w-full">
+              <NavItem
                 href="/careers/"
                 label="Careers"
                 closeMenu
                 className="text-lg"
               />
             </li>
-            <li className="w-full">
+            {/* <li className="w-full">
               <NavItem
                 href="/team/"
                 label="Team"
                 closeMenu
                 className="text-lg"
               />
-            </li>
+            </li> */}
             <li className="w-full">
               <NavItem
                 href="/about-us/"

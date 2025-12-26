@@ -1,6 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import WorldMap from "./WorldMap";
+import ClientLogos from "./ClientLogos";
 import { motion } from "framer-motion";
 
 const Testimonials: React.FC = () => {
@@ -55,6 +56,23 @@ const Testimonials: React.FC = () => {
         viewport={{ once: false, amount: 0.2 }}
       >
         <WorldMap />
+      </motion.div>
+
+      {/* Client Logos - Under Map */}
+      <motion.div 
+        className="w-full mt-8 mb-0"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: false, amount: 0.2 }}
+      >
+        <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-white">
+          Trusted by{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+            Leading Companies
+          </span>
+        </h2>
+        <ClientLogos />
       </motion.div>
     </motion.div>
   );
