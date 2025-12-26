@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import ClientLogos from "./ClientLogos";
 
 interface CounterProps {
   end: number;
@@ -59,13 +60,13 @@ const DigitalBrandSection: React.FC = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="bg-transparent text-white p-6 md:p-10 w-full"
+      className="bg-transparent text-white w-full"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: false, amount: 0.2 }}
     >
-      <div className="w-full md:w-[93%] mx-auto flex flex-col items-center justify-center text-center gap-6 md:gap-10 mb-8 md:mb-15">
+      <div className="w-full md:w-[93%] mx-auto flex flex-col items-center justify-center text-center gap-6 md:gap-10 mb-8 md:mb-15 px-6 md:px-10">
   <motion.h2
     className="text-3xl md:text-5xl font-bold leading-snug"
     initial={{ opacity: 0, y: 20 }}
@@ -89,7 +90,24 @@ const DigitalBrandSection: React.FC = () => {
   </motion.h2>
 </div>
 
+      {/* Client Logos - Below Main Heading */}
+      <motion.div 
+        className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mt-16 md:mt-20 mb-6 md:mb-8"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: false, amount: 0.2 }}
+      >
+        <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-semibold mb-8 text-white px-6">
+          Trusted by{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-yellow-300 to-white">
+            Leading Companies
+          </span>
+        </h2>
+        <ClientLogos />
+      </motion.div>
 
+      <div className="px-6 md:px-10">
       <motion.hr
         className="border-t border-gray-700 my-6 md:my-8 w-full md:w-[93%] mx-auto"
         initial={{ opacity: 0, width: 0 }}
@@ -162,6 +180,7 @@ const DigitalBrandSection: React.FC = () => {
           <p className="text-lg md:text-xl mt-2">Freelancers</p>
         </motion.div>
       </motion.div>
+      </div>
     </motion.section>
   );
 };

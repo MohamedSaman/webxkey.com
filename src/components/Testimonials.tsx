@@ -13,25 +13,8 @@ const Testimonials: React.FC = () => {
       transition={{ duration: 0.6 }}
       viewport={{ once: false, amount: 0.2 }}
     >
-      {/* Client Logos - Top Section */}
-      <motion.div 
-        className="w-full mb-16 md:mb-20"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: false, amount: 0.2 }}
-      >
-        <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 text-white">
-          Trusted by{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-            Leading Companies
-          </span>
-        </h2>
-        <ClientLogos />
-      </motion.div>
-
       {/* Styled Title */}
-      <div className="text-center mb-18 mt-8">
+      <div className="text-center mb-18">
         <motion.div 
           className="flex justify-center items-center mb-3 md:mb-4"
           initial={{ opacity: 0, y: 20 }}
