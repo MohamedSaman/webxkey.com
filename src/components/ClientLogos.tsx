@@ -49,6 +49,10 @@ const ClientLogos = () => {
       src: "/Images/plus.png",
       alt: "Client 12",
     },
+    {
+      src: "/Images/sahar.png",
+      alt: "Client 12",
+    },
     // Add more client logos here
   ];
 
