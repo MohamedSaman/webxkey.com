@@ -5,16 +5,29 @@ import Link from "next/link";
 import { getAllPosts } from "@/sanity/queries";
 import { urlFor } from "@/sanity/lib/image";
 
+interface MainImage {
+  alt?: string;
+  asset: {
+    _ref: string;
+  };
+}
+
+interface AuthorImage {
+  asset: {
+    _ref: string;
+  };
+}
+
 interface Post {
   title: string;
   slug: string;
   excerpt?: string;
   publishedAt: string;
   _createdAt: string;
-  mainImage?: any;
+  mainImage?: MainImage;
   author?: {
     name: string;
-    image?: any;
+    image?: AuthorImage;
   };
 }
 

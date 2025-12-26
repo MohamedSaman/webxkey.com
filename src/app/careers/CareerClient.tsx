@@ -204,7 +204,7 @@ const CareerClient = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              At Webxkey, we're a dynamic team of passionate{" "}
+              At Webxkey, we&apos;re a dynamic team of passionate{" "}
               <span className="font-semibold text-white">
                 developers, designers, and freelancers
               </span>{" "}
@@ -220,7 +220,7 @@ const CareerClient = () => {
             >
               As a growing company, we are always on the lookout for talented
               individuals who are excited about shaping the future of web design,
-              development, SEO, and app development. If you're driven by a
+              development, SEO, and app development. If you&apos;re driven by a
               passion for technology and want to work in an environment that fosters
               creativity and growth, Webxkey is the place for you!
             </motion.p>
@@ -380,7 +380,7 @@ const CareerClient = () => {
               transition={{ delay: 0.4 }}
             >
               Join a team that values innovation, collaboration, and personal growth. 
-              At Webxkey, you'll work on exciting projects, learn from industry experts, 
+              At Webxkey, you&apos;ll work on exciting projects, learn from industry experts, 
               and have the opportunity to shape your career path while making a real impact 
               in the digital world.
             </motion.p>

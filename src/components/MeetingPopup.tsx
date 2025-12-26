@@ -647,7 +647,7 @@ const MeetingPopup = ({ onClose }: { onClose: () => void }) => {
             </div>
             <h3 className="text-xl font-semibold mb-2">Meeting Scheduled!</h3>
             <p className="mb-4 text-gray-600">
-              We've saved your meeting for:
+              We&apos;ve saved your meeting for:
             </p>
             <div className="mb-4 p-3 bg-gray-50 rounded-md">
               <p className="font-medium">
@@ -661,7 +661,7 @@ const MeetingPopup = ({ onClose }: { onClose: () => void }) => {
               <p className="text-gray-600">{selectedTime} ({userTimezone})</p>
             </div>
             <p className="mb-6 text-gray-600 text-sm">
-              A confirmation has been logged. You'll receive meeting details shortly.
+              A confirmation has been logged. You&apos;ll receive meeting details shortly.
             </p>
             <button
               onClick={onClose}

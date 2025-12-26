@@ -366,7 +366,7 @@ const CertificationsSection = () => {
                     Partnership Inquiry
                   </h3>
                   <p className="text-gray-300 mb-6">
-                    Please fill out the form and we'll get back to you shortly.
+                    Please fill out the form and we&apos;ll get back to you shortly.
                   </p>
                 </>
               ) : (

@@ -246,7 +246,7 @@ const AIServicesClient = (): JSX.Element => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                We don't just build AI — we solve business problems with AI.
+                We don&apos;t just build AI — we solve business problems with AI.
               </motion.p>
             </div>
 
@@ -303,7 +303,7 @@ const AIServicesClient = (): JSX.Element => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1d86ff] to-[#3dd8ff]">
                 AI experts
               </span>{" "}
-              that can help you build intelligent solutions you're proud of
+              that can help you build intelligent solutions you&apos;re proud of
             </motion.h2>
 
             <motion.p
@@ -554,7 +554,7 @@ const AIServicesClient = (): JSX.Element => {
         >
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              🤝 Let's Build{" "}
+              🤝 Let&apos;s Build{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1d86ff] to-[#3dd8ff]">
                 Intelligent Solutions Together
               </span>
@@ -575,7 +575,7 @@ const AIServicesClient = (): JSX.Element => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Let's Start Your{" "}
+            Let&apos;s Start Your{" "}
             <span className="text-transparent bg-gradient-to-r from-[#038ed3] to-[#72e3ff] bg-clip-text">
               AI Project
             </span>

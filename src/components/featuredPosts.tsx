@@ -6,9 +6,22 @@ import dayjs from "dayjs";
 import Link from "next/link";
 
 // Define Post and Author interfaces
+interface AuthorImage {
+  asset: {
+    _ref: string;
+  };
+}
+
 interface Author {
   name: string;
-  image?: any;
+  image?: AuthorImage;
+}
+
+interface MainImage {
+  alt?: string;
+  asset: {
+    _ref: string;
+  };
 }
 
 interface Post {
@@ -17,7 +30,7 @@ interface Post {
   excerpt?: string;
   publishedAt: string;
   _createdAt: string;
-  mainImage?: any;
+  mainImage?: MainImage;
   author?: Author;
 }
 

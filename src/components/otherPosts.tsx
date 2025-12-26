@@ -15,9 +15,22 @@ const Loading = () => {
   );
 };
 
+interface AuthorImage {
+  asset: {
+    _ref: string;
+  };
+}
+
 interface Author {
   name: string;
-  image?: any;
+  image?: AuthorImage;
+}
+
+interface MainImage {
+  alt?: string;
+  asset: {
+    _ref: string;
+  };
 }
 
 interface OtherPost {
@@ -28,7 +41,7 @@ interface OtherPost {
   _createdAt?: string;
   _updatedAt?: string;
   author?: Author;
-  mainImage?: any;
+  mainImage?: MainImage;
 }
 
 interface OtherPostsProps {
