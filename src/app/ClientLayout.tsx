@@ -13,7 +13,8 @@ export default function ClientLayout({
 }) {
   const pathname = usePathname();
 
-  // List of all valid routes
+  console.log("Blog layout loaded");
+
   const validRoutes = [
     "/",
     "/services/",
