@@ -373,7 +373,7 @@ const AIServicesClient = (): JSX.Element => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               🧠 Our{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1d86ff] to-[#3dd8ff]">
@@ -382,11 +382,11 @@ const AIServicesClient = (): JSX.Element => {
             </h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8 w-full">
             {aiCapabilities.map((capability, index) => (
               <motion.div
                 key={index}
-                className="group relative bg-gradient-to-br from-[#0a1628]/80 to-[#0d1b2a]/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden"
+                className="group relative bg-gradient-to-br from-[#0f2744] to-[#1a1f3a] backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl md:rounded-2xl border border-cyan-500/40 hover:border-cyan-500/70 transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 w-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -394,69 +394,69 @@ const AIServicesClient = (): JSX.Element => {
                 whileHover={{ y: -5 }}
               >
                 {/* Animated background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl md:rounded-2xl"></div>
                 
-                <div className="relative">
-                  <div className="flex items-start gap-4 md:gap-6 mb-6">
+                <div className="relative z-10">
+                  <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6 mb-4 md:mb-6">
                     {/* Icon with gradient background */}
-                    <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-cyan-500/30">
+                    <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-500/30 to-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-cyan-500/50 shadow-lg">
                       {capability.icon}
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                    <div className="flex-1 min-w-0 w-full">
+                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3 group-hover:text-cyan-400 transition-colors duration-300 break-words">
                         {capability.title}
                       </h3>
-                      <p className="text-gray-400 text-base md:text-lg leading-relaxed">
+                      <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
                         {capability.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4 md:mt-6 w-full">
+                    <div className="space-y-3 md:space-y-4 w-full">
                       <div className="flex items-center gap-2">
-                        <div className="w-1 h-6 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full"></div>
-                        <h4 className="text-lg font-semibold text-cyan-400">
+                        <div className="w-1 h-5 md:h-6 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full"></div>
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-cyan-400">
                           What We Offer
                         </h4>
                       </div>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2 md:space-y-3 w-full">
                         {capability.services.map((service, idx) => (
                           <li
                             key={idx}
-                            className="text-gray-300 flex items-start gap-3 group/item hover:text-white transition-colors duration-200"
+                            className="text-gray-200 text-xs sm:text-sm md:text-base flex items-start gap-2 md:gap-3 group/item hover:text-white transition-colors duration-200"
                           >
-                            <span className="text-cyan-400 mt-1 text-lg">•</span>
-                            <span className="leading-relaxed">{service}</span>
+                            <span className="text-cyan-400 mt-0.5 md:mt-1 text-sm md:text-base flex-shrink-0">•</span>
+                            <span className="leading-relaxed break-words">{service}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-3 md:space-y-4 w-full">
                       <div className="flex items-center gap-2">
-                        <div className="w-1 h-6 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full"></div>
-                        <h4 className="text-lg font-semibold text-green-400">
+                        <div className="w-1 h-5 md:h-6 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full"></div>
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400">
                           Business Benefits
                         </h4>
                       </div>
-                      <ul className="space-y-3 mb-6">
+                      <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6 w-full">
                         {capability.benefits.map((benefit, idx) => (
                           <li
                             key={idx}
-                            className="text-gray-300 flex items-start gap-3 group/item hover:text-white transition-colors duration-200"
+                            className="text-gray-200 text-xs sm:text-sm md:text-base flex items-start gap-2 md:gap-3 group/item hover:text-white transition-colors duration-200"
                           >
-                            <FaCheckCircle className="text-green-400 mt-1 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
-                            <span className="leading-relaxed">{benefit}</span>
+                            <FaCheckCircle className="text-green-400 mt-0.5 md:mt-1 flex-shrink-0 text-xs sm:text-sm md:text-base group-hover/item:scale-110 transition-transform" />
+                            <span className="leading-relaxed break-words">{benefit}</span>
                           </li>
                         ))}
                       </ul>
-                      <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-4 rounded-xl border border-gray-700/50">
-                        <p className="text-sm text-gray-400">
+                      <div className="bg-gradient-to-br from-gray-700/60 to-gray-800/60 p-3 md:p-4 rounded-lg md:rounded-xl border border-cyan-500/30 w-full">
+                        <p className="text-xs sm:text-sm text-gray-300">
                           <span className="font-semibold text-cyan-400 block mb-1">
                             💼 Ideal for:
                           </span>
-                          <span className="text-gray-300">{capability.idealFor}</span>
+                          <span className="text-gray-200 break-words">{capability.idealFor}</span>
                         </p>
                       </div>
                     </div>
