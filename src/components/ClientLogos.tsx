@@ -8,11 +8,11 @@ const ClientLogos = () => {
       alt: "Client 1",
     },
     {
-      src: "/Images/IB.png",
+      src: "/Images/IB1.png",
       alt: "Client 2",
     },
     {
-      src: "/Images/nexgen.png",
+      src: "/Images/nexd.png",
       alt: "Client 3",
     },
     {
@@ -20,7 +20,7 @@ const ClientLogos = () => {
       alt: "Client 4",
     },
     {
-      src: "/Images/miracle.png",
+      src: "/Images/miracle1.png",
       alt: "Client 5",
     },
     {
@@ -32,8 +32,22 @@ const ClientLogos = () => {
       alt: "Client 7",
     },
     {
-      src: "/Images/sevena.png",
-      alt: "Client 8",
+      src: "/Images/sevena1.png",
+      alt: "Client 9",
+    },
+     {
+      src: "/Images/Fine.png",
+      alt: "Client 10",
+    },
+
+    {
+      src: "/Images/frieght.png",
+      alt: "Client 11",
+    },
+
+    {
+      src: "/Images/plus.png",
+      alt: "Client 12",
     },
     // Add more client logos here
   ];
