@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import WhatsAppChat from "@/components/WhatsAppChat";
 import "@/app/styles/home.css";
 
 export default function ClientLayout({
@@ -87,7 +87,7 @@ export default function ClientLayout({
       {shouldShowNavFooter && <Navbar />}
       <main className="flex-grow">{children}</main>
       {shouldShowNavFooter && <Footer />}
-      {shouldShowNavFooter && <WhatsAppButton />}
+      {shouldShowNavFooter && <WhatsAppChat />}
     </>
   );
 }
