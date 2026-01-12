@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import ContactForm from "../../components/ContactForm";
 import CollapsibleSections from "../../components/layouts/CollapsibleSections";
 import Faqs from "../../components/layouts/Faqs";
-import Image from "next/image";
+import PageHeader from "@/components/PageHeader";
 
 const BrandIdentityClient: React.FC = () => {
   const [showMeetingPopup, setShowMeetingPopup] = useState(false);
@@ -18,83 +18,14 @@ const BrandIdentityClient: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <section className="my-[60px] md:my-[80px] relative">
-          {/* Decorative background shapes */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full filter blur-3xl"></div>
-            <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
-          </div>
-
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Text content */}
-            <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
-              <motion.div
-                className="inline-block bg-gradient-to-r from-[#013e84] to-[#0ea0c4] text-white font-semibold px-5 py-2 rounded-full shadow-lg"
-                initial={{ opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                Brand Identity Services
-              </motion.div>
-
-              <motion.h2
-                className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white"
-                initial={{ opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                Elevate Your Brand To{" "}
-                <span className="text-transparent bg-gradient-to-r from-[#038ed3] to-[#72e3ff] bg-clip-text">
-                  The Next Level
-                </span>
-              </motion.h2>
-
-              <motion.p
-                className="text-lg text-gray-300 max-w-lg mx-auto lg:mx-0"
-                initial={{ opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                Custom brand identity solutions that strengthen your business
-                presence and make your brand unforgettable.
-              </motion.p>
-            </div>
-
-            {/* Image section */}
-            <div className="lg:w-1/2 relative">
-              <div className="absolute -right-10 -top-10 w-64 h-64 bg-blue-500/10 rounded-full filter blur-3xl -z-10"></div>
-              <div className="absolute -left-10 -bottom-10 w-72 h-72 bg-cyan-500/10 rounded-full filter blur-3xl -z-10"></div>
-
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 1, x: 0 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                {/* Floating decorative elements */}
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-blue-400/20 rounded-xl rotate-45 -z-10"></div>
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-cyan-400/20 rounded-full -z-10"></div>
-
-                {/* Main image with hover effects */}
-                <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-400/10 -z-10"></div>
-                  <Image
-                    src="/Images/brand-n.png"
-                    alt="Brand Identity Example"
-                    className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                    width={600}
-                    height={400}
-                    quality={85}
-                    priority
-                    fetchPriority="high"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <PageHeader
+          tagline="Brand Identity Services"
+          heading="Elevate Your Brand To"
+          highlightedText="The Next Level"
+          description="Custom brand identity solutions that strengthen your business presence and make your brand unforgettable."
+          imageSrc="/Images/brand-n.png"
+          imageAlt="Brand Identity Example"
+        />
 
         {/* Collapsible Sections */}
         <CollapsibleSections
