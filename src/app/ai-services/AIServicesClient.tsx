@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ContactForm from "../../components/ContactForm";
 import PageHeader from "@/components/PageHeader";
 import Image from "next/image";
+import Script from "next/script";
 import {
   FaRobot,
   FaChartLine,
@@ -501,6 +502,34 @@ const AIServicesClient = (): JSX.Element => {
           </motion.div>
         </section>
       </div>
+
+      {/* Structured Data for Google */}
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "AI Services",
+            description:
+              "Transform your business with Webxkey's end-to-end AI solutions. From AI chatbots and predictive analytics to computer vision and intelligent automation.",
+            provider: {
+              "@type": "Organization",
+              name: "Webxkey",
+              url: "https://webxkey.com",
+              logo: "https://webxkey.com/logo.png",
+            },
+            areaServed: "Global",
+            serviceType: [
+              "AI Chatbots & Virtual Assistants",
+              "Predictive Analytics",
+              "Natural Language Processing",
+              "Computer Vision",
+              "Intelligent Automation",
+            ],
+          }),
+        }}
+      />
     </div>
   );
 };
