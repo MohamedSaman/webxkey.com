@@ -28,6 +28,7 @@ interface Post {
   title: string;
   slug: string;
   excerpt?: string;
+  keyTakeaways?: string[];
   publishedAt: string;
   _createdAt: string;
   mainImage?: MainImage;
@@ -84,6 +85,13 @@ export default async function FeaturedPosts() {
                 <h2 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-3 leading-tight">
                   {post?.title}
                 </h2>
+
+                {/* Key Takeaways */}
+                {post?.keyTakeaways && post?.keyTakeaways?.length > 0 && (
+                  <p className="text-white text-sm mb-3 leading-relaxed">
+                    {post?.keyTakeaways[0]}
+                  </p>
+                )}
 
                 {/* Excerpt */}
                 <p className="text-gray-300 text-sm leading-relaxed mb-4 flex-1">

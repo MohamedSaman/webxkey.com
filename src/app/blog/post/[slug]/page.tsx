@@ -120,17 +120,25 @@ export default async function SinglePostPage({
           </div>
         )}
 
-        {/* Excerpt - Updated with dark theme */}
-        {post.excerpt && (
+        {/* Key Takeaways - Updated with dark theme */}
+        {(post.keyTakeaways?.length > 0 || post.excerpt) && (
           <div className="mb-12 md:mb-16 p-4 md:p-6 bg-gray-800 rounded-xl border-l-4 border-blue-500">
             <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-blue-300">
               Key Takeaways
             </h2>
-            <div className="text-sm md:text-base">
-              <p className="break-words whitespace-normal overflow-visible leading-relaxed text-white">
+            {post.keyTakeaways && post.keyTakeaways.length > 0 ? (
+              <div className="space-y-3 md:space-y-4">
+                {post.keyTakeaways.map((takeaway: string, index: number) => (
+                  <p key={index} className="text-sm md:text-base text-gray-200 leading-relaxed">
+                    {takeaway}
+                  </p>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm md:text-base text-gray-200 break-words whitespace-normal overflow-visible leading-relaxed">
                 {post.excerpt}
               </p>
-            </div>
+            )}
           </div>
         )}
 

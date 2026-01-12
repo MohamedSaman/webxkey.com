@@ -25,6 +25,7 @@ interface Post {
   publishedAt: string;
   _createdAt: string;
   mainImage?: MainImage;
+  keyTakeaways?: string[];
   author?: {
     name: string;
     image?: AuthorImage;
@@ -83,6 +84,13 @@ export default async function RecentPosts() {
                 <h2 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors mb-2 leading-tight">
                   {post.title}
                 </h2>
+
+                {/* Key Takeaways */}
+                {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+                  <p className="text-white text-sm mb-3 leading-relaxed line-clamp-2">
+                    {post.keyTakeaways[0]}
+                  </p>
+                )}
 
                 {/* Excerpt */}
                 <p className="text-gray-300 text-sm line-clamp-2 leading-relaxed mb-3">

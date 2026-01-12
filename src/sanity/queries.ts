@@ -9,6 +9,7 @@ const FEATURED_POSTS_QUERY =
     _updatedAt,
     mainImage,
     excerpt,
+    keyTakeaways,
     author->{
         name, 
         image
@@ -31,6 +32,7 @@ const ALL_POSTS_QUERY = defineQuery(`*[
   _updatedAt,
   mainImage,
   excerpt,
+  keyTakeaways,
   author->{
     name,
     image,
@@ -62,6 +64,7 @@ const POST_QUERY = defineQuery(`*[_type=='post' && slug.current == $slug][0]{
   mainImage,
   excerpt,
   body,
+  keyTakeaways,
   _id,
   "slug": slug.current,
   author->{
@@ -116,6 +119,7 @@ const GET_OTHERS_POSTS_QUERY = defineQuery(`*[
   _updatedAt,
   mainImage,
   excerpt,
+  keyTakeaways,
   author->{
     name,
     image

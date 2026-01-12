@@ -42,6 +42,7 @@ interface OtherPost {
   _updatedAt?: string;
   author?: Author;
   mainImage?: MainImage;
+  keyTakeaways?: string[];
 }
 
 interface OtherPostsProps {
@@ -111,6 +112,11 @@ export default function OtherPosts({
                   {post.title}
                 </p>
               </Link>
+              {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+                <p className="text-gray-400 text-sm mt-2">
+                  {post.keyTakeaways[0]}
+                </p>
+              )}
               <p className="text-gray-300 mt-2 text-sm line-clamp-2">
                 {post.excerpt}
               </p>

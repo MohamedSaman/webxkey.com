@@ -28,6 +28,13 @@ export const postType = defineType({
       },
     }),
     defineField({
+      name: 'keyTakeaways',
+      title: 'Key Takeaways',
+      type: 'array',
+      of: [defineArrayMember({type: 'text'})],
+      description: 'Add key takeaways or important points from this blog post',
+    }),
+    defineField({
       name: 'keywords',
       title: 'SEO Keywords',
       type: 'array',
@@ -64,13 +71,6 @@ export const postType = defineType({
     defineField({
       name: 'publishedAt',
       type: 'datetime',
-    }),
-    defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      description: 'A brief summary of the post (recommended: 150-160 characters)',
-      validation: Rule => Rule.max(200),
     }),
     defineField({
       name: 'body',
