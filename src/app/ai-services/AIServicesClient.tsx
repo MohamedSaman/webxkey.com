@@ -193,7 +193,7 @@ const AIServicesClient = (): JSX.Element => {
       {/* Main content container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PageHeader
-          tagline="🤖 AI Services"
+          tagline="AI Services"
           heading="Intelligent AI Solutions That Drive"
           highlightedText="Business Growth"
           description="At Webxkey, we deliver end-to-end AI solutions that help businesses automate operations, improve customer experiences, and make smarter decisions using data. From AI chatbots and predictive analytics to computer vision and intelligent automation, we design, build, and deploy AI systems tailored to your business needs. We don't just build AI — we solve business problems with AI."
